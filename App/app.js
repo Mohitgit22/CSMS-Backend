@@ -8,9 +8,15 @@ import { globalErrhandler, notFound } from '../middlewares/globalErrHandler.js';
 import AnnouncementRoutes from '../routes/AnnouncementRoute.js';
 import TeamRoutes from '../routes/teamRoute.js';
 import PlayerRoutes from '../routes/PlayerRoute.js';
+import MatchRoutes from '../routes/matchStatsRoute.js';
+import predictionRoutes from '../routes/predictPoint.js';
 
 //db Connect
 dbConnect();
+
+
+
+
 
 
 // password - iIYkSph2ioRv5ht1
@@ -24,6 +30,8 @@ app.use(express.json());
 app.use('/api/v1/announcements/', AnnouncementRoutes);
 app.use('/api/v1/teams/', TeamRoutes);
 app.use('/api/v1/players/', PlayerRoutes);
+app.use('/api/v1/matches/', MatchRoutes);
+app.use('/api/v1/predict/', predictionRoutes);
 
 //err middlewares
 app.use(notFound);
