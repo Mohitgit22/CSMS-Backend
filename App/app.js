@@ -10,6 +10,7 @@ import TeamRoutes from '../routes/teamRoute.js';
 import PlayerRoutes from '../routes/PlayerRoute.js';
 import MatchRoutes from '../routes/matchStatsRoute.js';
 import predictionRoutes from '../routes/predictPoint.js';
+import SportsRoutes from '../routes/sportRoute.js';
 
 //db Connect
 dbConnect();
@@ -32,6 +33,7 @@ app.use('/api/v1/teams/', TeamRoutes);
 app.use('/api/v1/players/', PlayerRoutes);
 app.use('/api/v1/matches/', MatchRoutes);
 app.use('/api/v1/predict/', predictionRoutes);
+app.use('/api/v1/sports/',SportsRoutes);
 
 //err middlewares
 app.use(notFound);

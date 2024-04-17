@@ -5,8 +5,8 @@ import asyncHandler from 'express-async-handler';
 // @route   POST /api/teams
 // @access  Public
 export const createTeam = asyncHandler(async (req, res) => {
-  const { name, players } = req.body;
-  const newTeam = await Team.create({ name,teamLeader, players });
+  const { name, teamLeader,players,purse } = req.body;
+  const newTeam = await Team.create({ name, teamLeader, players,purse });
   res.status(201).json(newTeam);
 });
 
@@ -34,10 +34,10 @@ export const getTeamById = asyncHandler(async (req, res) => {
 // @route   PUT /api/teams/:id
 // @access  Public
 export const updateTeamById = asyncHandler(async (req, res) => {
-  const { name, players } = req.body;
+  const { name, players ,teamLeader} = req.body;
   const updatedTeam = await Team.findByIdAndUpdate(
     req.params.id,
-    { name, players },
+    { name, players ,teamLeader},
     { new: true }
   );
   if (!updatedTeam) {

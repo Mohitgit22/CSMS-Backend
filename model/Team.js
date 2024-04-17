@@ -15,7 +15,8 @@ const teamSchema = new mongoose.Schema({
     ref: 'Player'
   }],
   purse:{
-    type: Number
+    type: Number,
+     default: 0
   }
   
 },{

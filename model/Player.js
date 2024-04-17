@@ -10,9 +10,9 @@ const playerSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  team: [{
+  SportName: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: 'Sports',
     required: true
   }],
   description: {
@@ -38,6 +38,14 @@ const playerSchema = new mongoose.Schema({
       type: String
     }
   }],
+  basePrice: {
+    type: Number,
+    required: true
+  },
+  teamLeader:{
+    type: Boolean,
+    default: false
+  }
 },{
     timestamps:true
 });
