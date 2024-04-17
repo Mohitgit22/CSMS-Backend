@@ -6,10 +6,17 @@ const teamSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  teamLeader:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Player'
+  },
   players: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Player'
   }],
+  purse:{
+    type: Number
+  }
   
 },{
     timestamps:true

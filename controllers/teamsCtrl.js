@@ -6,7 +6,7 @@ import asyncHandler from 'express-async-handler';
 // @access  Public
 export const createTeam = asyncHandler(async (req, res) => {
   const { name, players } = req.body;
-  const newTeam = await Team.create({ name, players });
+  const newTeam = await Team.create({ name,teamLeader, players });
   res.status(201).json(newTeam);
 });
 
@@ -57,4 +57,15 @@ export const deleteTeamById = asyncHandler(async (req, res) => {
     throw new Error('Team not found');
   }
   res.json({ message: 'Team deleted successfully' });
+});
+
+
+export const isTeamLeader = asyncHandler(async (req, res) => {
+    const response = await Team.findOne({teamLeader:req.params.id});
+    if(response){
+      res.status(200).json({ isTeamLeader: true });
+    }
+    else{
+      res.status(500).json({ teamLeader:false});
+    }
 });

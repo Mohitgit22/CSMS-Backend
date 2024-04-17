@@ -4,12 +4,14 @@ import {
   getAllTeams,
   getTeamById,
   updateTeamById,
-  deleteTeamById
+  deleteTeamById,
+  isTeamLeader
 } from '../controllers/teamsCtrl.js';
 
 const TeamRoutes = express.Router();
 
 TeamRoutes.post('/', createTeam);
+TeamRoutes.post('/isTeamLeader/:id', isTeamLeader);
 TeamRoutes.get('/',  getAllTeams);
 TeamRoutes.get('/:id', getTeamById);
 TeamRoutes.patch('/:id', updateTeamById);
