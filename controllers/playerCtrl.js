@@ -6,11 +6,11 @@ import asyncHandler from 'express-async-handler';
 // @route   POST /api/players
 // @access  Public
 export const createPlayer = asyncHandler(async (req, res) => {
-  const { name, year, SportName, description, phoneNumber, socialMedia, achievements, basePrice,teamLeader } = req.body;
+  const { name, year, SportName, description, phoneNumber, socialMedia, achievements, basePrice,teamLeader , email} = req.body;
 
   const isTeamLeader = teamLeader === true;
 
-  const newPlayer = await Player.create({ name, year, SportName, description, phoneNumber, socialMedia, achievements, basePrice ,teamLeader: isTeamLeader });
+  const newPlayer = await Player.create({ name, year, SportName, description, phoneNumber, socialMedia, achievements, basePrice ,teamLeader: isTeamLeader,email });
   res.status(201).json(newPlayer);
 });
 
