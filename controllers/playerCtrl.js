@@ -84,3 +84,14 @@ export const getPlayersBySportsName = asyncHandler(async (req, res) => {
 
   res.json(players);
 });
+
+export const isTeamLeaderVerify = asyncHandler(async (req, res) => {
+  const userEmail = req.body.email;
+  const response = await Player.find({ email: userEmail });
+
+  if (!response || response.length === 0) {
+    res.send({ msg: false });
+  } else {
+    res.send({ msg: true ,player:response});
+  }
+});
