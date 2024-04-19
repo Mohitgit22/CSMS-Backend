@@ -1,4 +1,5 @@
 import Player from '../model/Player.js';
+import Sports from '../model/Sport.js';
 import asyncHandler from 'express-async-handler';
 
 // @desc    Create a new player
@@ -61,4 +62,25 @@ export const deletePlayerById = asyncHandler(async (req, res) => {
     throw new Error('Player not found');
   }
   res.json({ message: 'Player deleted successfully' });
+});
+
+// @desc    Get players by sports name
+// @route   GET /api/players/sports
+// @access  Public
+export const getPlayersBySportsName = asyncHandler(async (req, res) => {
+ // console.log(req.body.sportName);
+
+  const sport = await Sports.findOne({ name: req.body.sportName });
+  if (!sport) {
+    res.status(404);
+    throw new Error('Sport not found');
+  }
+
+  const players = await Player.find({ SportName: sport._id });
+  if (!players) {
+    res.status(404);
+    throw new Error('Players not found');
+  }
+
+  res.json(players);
 });

@@ -83,8 +83,8 @@ const predictScores = asyncHandler(async (req, res) => {
     // Predict points for specified teams
     let { roundedPointsA, roundedPointsB } = await predictMatchPoints(teamA, teamB);
 
-    roundedPointsA=roundedPointsA |0 ;
-    roundedPointsB=roundedPointsB | 0;
+    roundedPointsA=roundedPointsA |0;
+    roundedPointsB=roundedPointsB |0;
 
     // Respond with predicted points
     res.json({ roundedPointsA, roundedPointsB });
