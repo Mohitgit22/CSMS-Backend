@@ -16,7 +16,8 @@ const teamSchema = new mongoose.Schema({
   }],
   purse:{
     type: Number,
-     default: 0
+     default: 0,
+     min:0
   }
   
 },{
